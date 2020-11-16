@@ -1,35 +1,37 @@
-import React from 'react';
-import { DatePicker, TimePicker, Calendar } from './components';
-import format from 'dayjs';
-import './App.css';
+import React from 'react'
+import { ConfigProvider } from 'antd'
+import svSE from 'antd/lib/locale/sv_SE'
 
-const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+import { DatePicker, Calendar } from './components'
+import './App.css'
+
+const { MonthPicker, RangePicker, WeekPicker } = DatePicker
+
 function App() {
-  function onChange(date, dateString) {
-    console.log(date, dateString);
-  }
-  function onPanelChange(value, mode) {
-    console.log(value, mode);
-  }
-  return (
-    <div className="App">
-      <div>
-        <DatePicker onChange={onChange} />
-        <br />
-        <MonthPicker onChange={onChange} placeholder="Select month" />
-        <br />
-        <RangePicker onChange={onChange} />
-        <br />
-        <WeekPicker onChange={onChange} placeholder="Select week" />
-      </div>
-      <Calendar onPanelChange={onPanelChange} />
-      <div>
-        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="large" />
-        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} />
-        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="small"/>
-      </div>
-    </div>
-  );
+	function onChange( date, dateString ) {
+		console.log( date, dateString )
+	}
+
+	function onPanelChange( value, mode ) {
+		console.log( value, mode )
+	}
+
+	return (
+		<ConfigProvider locale={svSE}>
+			<div className="App">
+				<div>
+					<DatePicker onChange={onChange}/>
+					<br/>
+					<MonthPicker onChange={onChange}/>
+					<br/>
+					<RangePicker onChange={onChange}/>
+					<br/>
+					<WeekPicker onChange={onChange}/>
+				</div>
+				<Calendar onPanelChange={onPanelChange}/>
+			</div>
+		</ConfigProvider>
+	)
 }
 
-export default App;
+export default App
